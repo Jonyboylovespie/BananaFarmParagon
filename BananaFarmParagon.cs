@@ -128,7 +128,7 @@ namespace BananaFarmParagon
         };
         public static readonly ModSettingInt ParagonCost = new(1000000)
         {
-            displayName = "Paragon Totem Cost",
+            displayName = "Banana Farm Paragon Cost",
             min = 0
         };
     }

@@ -2,7 +2,7 @@
 {
     public static class ModHelperData
     {
-        public const string Version = "1.0.2";
+        public const string Version = "1.0.3";
         public const string Name = "Banana Farm Paragon";
         public const string Description =
             "This mod adds a paragon upgrade to the banana farm. You can toggle this mod from balanced to OP in mod settings.<br><br>" +
