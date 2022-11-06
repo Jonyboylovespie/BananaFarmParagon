@@ -50,8 +50,11 @@ namespace BananaFarmParagon
 {
     public class Main : BloonsTD6Mod
     {
-        public override void OnNewGameModel(GameModel gameModel)
+        public override void OnNewGameModel(GameModel gameModel, Il2CppSystem.Collections.Generic.List<ModModel> mods)
         {
+
+            gameModel.GetParagonUpgradeForTowerId("BananaFarm").cost = CostHelper.CostForDifficulty(Settings.ParagonCost, mods);
+
             foreach (var towerModel in gameModel.towers)
             {
                 if (towerModel.appliedUpgrades.Contains(ModContent.UpgradeID<Paragon.BananaFarmParagonUpgrade>()))
@@ -79,21 +82,9 @@ namespace BananaFarmParagon
                 }
             }
         }
-        public static bool Cheating;
         public override void OnMainMenu()
         {
             base.OnMainMenu();
-
-            //cheats popup
-
-            if (Cheating == true)
-            {
-                PopupScreen.instance.ShowEventPopup(PopupScreen.Placement.menuCenter, "Cheat Mods Detected", "Cheat mods have been detected. To remove this message hold down ALT + F4 to close your game, then remove your cheat mods. If not then you will not be able to continue to the game. Have fun staring at this popup! :) :) :) :) :) :) :) :) :) :) :) :)", "Neither Does This", (Action)null, "This Does Nothing", (Action)null, Popup.TransitionAnim.AnimIndex, 38);
-            }
-            else
-            {
-
-            }
 
             //Op melon msg
 
@@ -115,70 +106,9 @@ namespace BananaFarmParagon
                     }
                 }
             
-
         }
         public override void OnApplicationStart()
         {
-
-            //cheats check
-
-            if (ModContent.HasMod("BTD6 All Trophy Store Items Unlocker"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("BTD6 Boss Bloons In Sandbox"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("BTD6 Golden Bloon In Sandbox"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("BTD6 Infinite Monkey Knowledge"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("BTD6 Infinite Monkey Money"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("BTD6 Infinite Tower XP"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("Gurren Core"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("infinite_xp"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("NKHook6"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("NoAbilityCoolDown"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("UnlockAllMaps"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("UnlockDoubleCash"))
-            {
-                Cheating = true;
-            }
-            if (ModContent.HasMod("xpfarming"))
-            {
-                Cheating = true;
-            }
-            else
-            {
-
-            }
-
             MelonLogger.Msg(ConsoleColor.Yellow, "The great one... Is ready...");
         }
     }
@@ -195,6 +125,11 @@ namespace BananaFarmParagon
             displayName = "Toggle Popup",
             description = "Toggles the popup on main menu that tells you what version of the banana farm paragon you are on",
             button = true,
+        };
+        public static readonly ModSettingInt ParagonCost = new(1000000)
+        {
+            displayName = "Paragon Totem Cost",
+            min = 0
         };
     }
     public class Paragon
