@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Models.Towers.Weapons.Behaviors;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Display;
+﻿using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
@@ -12,17 +12,17 @@ using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using ModHelperData = BananaFarmParagon.ModHelperData;
 using BTD_Mod_Helper.Api.ModOptions;
-using Assets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BananaFarmParagon.bananafarmfake;
-using Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
-using Assets.Scripts.Utils;
-using Assets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using weapondisplays;
 using BTD_Mod_Helper.Api.Data;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Mods;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
 using BTD_Mod_Helper.Api.Helpers;
-using Assets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Models.TowerSets;
 
 [assembly: MelonInfo(typeof(BananaFarmParagon.Main), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
