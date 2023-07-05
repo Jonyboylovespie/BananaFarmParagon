@@ -131,7 +131,6 @@ namespace BananaFarmParagon
         public class BananaFarmParagon : ModVanillaParagon
         {
             public override string BaseTower => "BananaFarm-500";
-            public override string Name => "BananaFarm";
         }
         public class BananaFarmParagonUpgrade : ModParagonUpgrade<BananaFarmParagon>
         {
