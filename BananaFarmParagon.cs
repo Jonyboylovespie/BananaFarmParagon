@@ -15,14 +15,13 @@ using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BananaFarmParagon.bananafarmfake;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using weapondisplays;
 using BTD_Mod_Helper.Api.Data;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Towers.Mods;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 
 [assembly: MelonInfo(typeof(BananaFarmParagon.Main), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
@@ -112,13 +111,13 @@ namespace BananaFarmParagon
         {
             displayName = "OP Mode of Banana Farm Paragon",
             description = "Toggles the OP mode of the banana farm paragon",
-            button = true,
+            button = true
         };
         public static readonly ModSettingBool TogglePopup = new(true)
         {
             displayName = "Toggle Popup",
             description = "Toggles the popup on main menu that tells you what version of the banana farm paragon you are on",
-            button = true,
+            button = true
         };
         public static readonly ModSettingInt ParagonCost = new(1000000)
         {
@@ -128,6 +127,16 @@ namespace BananaFarmParagon
     }
     public class Paragon
     {
+        public class Display : ModTowerDisplay<BananaFarmParagon>
+        {
+            public override string BaseDisplay => GetDisplay(TowerType.BananaFarm, 4, 0, 0);
+            public override bool UseForTower(int[] tiers)
+            { return IsParagon(tiers); }
+            public override void ModifyDisplayNode(UnityDisplayNode node)
+            {
+                SetMeshTexture(node, "texture1");
+            }
+        }
         public class BananaFarmParagon : ModVanillaParagon
         {
             public override string BaseTower => "BananaFarm-500";
@@ -206,7 +215,7 @@ namespace BananaFarmParagon
                 towerModel.RemoveBehaviors<AttackModel>();
                 towerModel.isSubTower = true;
                 towerModel.AddBehavior(new TowerExpireModel("ExpireModel", 45f, 3, false, false));
-                towerModel.display = new PrefabReference() { guidRef = "cd01e5de10343944ea24e6a6b3690b3a" };
+                towerModel.display = new PrefabReference { guidRef = "cd01e5de10343944ea24e6a6b3690b3a" };
                 towerModel.range += 0;
                 towerModel.AddBehavior(Game.instance.model.GetTowerFromId("BananaFarm-005").GetBehavior<CollectCashZoneModel>().Duplicate());
                 towerModel.GetBehavior<CollectCashZoneModel>().collectRange = 1;
